@@ -6,7 +6,7 @@ const int DIM=3;
 
 int dimcmp;
 
-int mask=(1<<2); // Mettre les bits de 2 à DIM-1 à 1
+int mask=0; 
 
 
 struct Point
@@ -133,6 +133,8 @@ vector<Point*> DPR(int i,vector<Point*>& T)
 
 void algo(vector<Point*> T)
 {
+	for(int i=1;i<DIM;i++)
+		mask|=(1<<i);
 	triPoints(T,DIM);
 	DPR(DIM,T);
 }

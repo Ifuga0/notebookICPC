@@ -15,7 +15,7 @@ void Dijkstra(vector<int> departs,int n) // ensemble des noeuds de départ et no
 	vector<int> dist(n,-1);
 	vector<int> pred(n,-1);
 	vector<bool> vu(n,false);
-	for(int d:departs) // Pour prim on se contente d'un noeud quelconque
+	for(int d:departs) // Pour Prim on se contente d'un noeud quelconque
 		dist[d]=0;
 	while(true)
 	{
@@ -33,7 +33,7 @@ void Dijkstra(vector<int> departs,int n) // ensemble des noeuds de départ et no
 		for(Arete ar:adj[iMin])
 			if(!vu[ar.dest])
 			{
-				int ndist=dist[iMin]+ar.len; // Pour prim retirer "dist[iMin]
+				int ndist=dist[iMin]+ar.len; // Pour Prim retirer "dist[iMin]"
 				if(ndist<dist[ar.dest])
 				{
 					dist[ar.dest]=ndist;
