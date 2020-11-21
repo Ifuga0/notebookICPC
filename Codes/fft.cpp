@@ -1,9 +1,8 @@
-#include "kernel/fft.h"
+const double PI=2*asin(1);
 
 using vcd = std::vector<std::complex<double>>;
 
-std::vector<std::complex<double>> fft(
-    const std::vector<std::complex<double>> &as) {
+vcd fft(const vcd &as) {
 	int n = as.size();
 	int k = 0;
 	while ((1 << k) < n) k++;
@@ -17,10 +16,12 @@ std::vector<std::complex<double>> fft(
 		rev[i] |= (1 << (k - high1 - 1));
 	}
 
-	std::vector<std::complex<double>> roots(n);
-	for (int i = 0; i < n; i++) {
-		double alpha = 2 * M_PI * i / n;
-		roots[i] = std::complex<double>(cos(alpha), sin(alpha));
+	vcd roots(n,1.);
+	for (int i = 1; i < n/2; i++) {
+		double alpha = 2 * PI * i / n;
+		double ca=cos(alpha),sa=sin(alpha);
+		roots[i] = std::complex<double>(ca, sa);
+		roots[n-i] = std::complex<double>(ca, -sa);
 	}
 
 	vcd rows[2] = {vcd(n), vcd(n)};
@@ -44,9 +45,8 @@ std::vector<std::complex<double>> fft(
 	return rows[id];
 }
 
-std::vector<std::complex<double>> fft_rev(
-    const std::vector<std::complex<double>> &as) {
-	std::vector<std::complex<double>> res = fft(as);
+vcd fft_rev(const vcd &as) {
+	vcd res = fft(as);
 	for (auto &r : res) {
 		r /= as.size();
 	}
