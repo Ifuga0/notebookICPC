@@ -87,11 +87,11 @@ void update(int i, int x) {
       v++; // i on right
     po /= 2;
   }
-  tree[i].min = tree[i].sum = x; // update el
+  tree[i].max = tree[i].min = tree[i].sum = x; // update el
   for(i /= 2; i > 0; i /= 2) // update all segments containing i
     compute(i);
 }
-// v: the current vertex with corressponding range in [left, right)
+// v: the current vertex with corresponding range in [left, right)
 // add value x for element in range [l, r)
 void update_range_aux(int v, int left, int right, int l, int r, int a, int b) {
   push(v);
@@ -106,7 +106,7 @@ void update_range_aux(int v, int left, int right, int l, int r, int a, int b) {
   update_range_aux(2*v+1, m, right, l, r, a, b);
   compute(v);
 }
-// update [l,r)
+// update [l,r) with x -> ax+b
 void update_range(int l, int r, int a, int b) {
   update_range_aux(1, 0, N, l, r, a, b);
 }
