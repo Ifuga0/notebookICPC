@@ -59,7 +59,7 @@ struct Infos
     int min,max,sum;
 };
 // v: current vertex with corressponding range [left, right)
-// find minimum and sum of the range [l, r)
+// find min,max and sum of the range [l, r)
 Infos query_aux(int v, int left, int right, int l, int r) {
   push(v);
   if(right <= l || r <= left) // outside
@@ -92,7 +92,7 @@ void update(int i, int x) {
     compute(i);
 }
 // v: the current vertex with corresponding range in [left, right)
-// add value x for element in range [l, r)
+// use update_range instead
 void update_range_aux(int v, int left, int right, int l, int r, int a, int b) {
   push(v);
   if(right <= l || r <= left)

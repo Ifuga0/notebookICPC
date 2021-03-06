@@ -1,3 +1,6 @@
+// Arbre binaire de recherche équilibré
+// On pourrait rajouter du retournement paresseux
+
 #define card(u) (u==NULL?0:u->size)
 
 struct Node
@@ -7,7 +10,6 @@ struct Node
     Node *left, *right;
     Node(int v,int r,int i) { val=v; rank=r; id=i; size=1; left=NULL; right=NULL; }
 };
-
 
 // Trouver le Kieme élément dans l'ordre croissant des valeurs (numerotation à partir de 0)
 int findKth(Node* u,int k)
@@ -21,7 +23,6 @@ int findKth(Node* u,int k)
     else
         return findKth(u->right,k-leftSz-1);
 }
-
 
 // Couper par rapport à la valeur x
 pair<Node*,Node*> cut(Node* u,int x)
@@ -43,7 +44,6 @@ pair<Node*,Node*> cut(Node* u,int x)
         return {lc.first,u};
     }
 }
-
 
 // Fusion de deux arbres cartésiens u et v tels que toute valeur de u est plus petite
 // que toute valeur de v

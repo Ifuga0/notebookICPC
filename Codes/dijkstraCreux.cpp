@@ -9,10 +9,10 @@ vector<Arete> adj[NMAX];
 // Pour les graphes creux, complexite O(|E|log|E|)
 // Construit une forêt des plus courts chemins dans un graphe à pondération positive.
 
-struct AreteDijkstra
+struct ArcDijkstra
 {
 	int dist,next,prev;
-	bool operator<(const AreteDijkstra& other)	const
+	bool operator<(const ArcDijkstra& other)	const
 	{
 		return dist>other.dist;
 	}
@@ -23,7 +23,7 @@ void Dijkstra(vector<int> departs,int n) // ensemble des noeuds de départ et no
 	vector<int> dist(n,-1);
 	vector<int> pred(n,-1);
 	vector<bool> vu(n,false);
-	priority_queue<AreteDijkstra> file;
+	priority_queue<ArcDijkstra> file;
 	for(int d:departs)// Pour Prim on se contente d'un noeud quelconque
 	{
 		dist[d]=0;

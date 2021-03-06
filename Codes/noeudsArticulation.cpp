@@ -1,4 +1,4 @@
-
+// Vertices should be 1-indexed
 vector<int> adj[NMAX];
 char vu[NMAX];
 int prof[NMAX];
@@ -6,11 +6,9 @@ int pere[NMAX];
 int remontee[NMAX];
 int taille[NMAX];
 int nbFils[NMAX];
-int n,m;
 vector<int> articulations;
 
-void dfs(int u,int p)
-{
+void dfs(int u,int p) { // call with p=0
 	pere[u]=p;
 	prof[u]=prof[p]+1;
 	remontee[u]=prof[u];
@@ -43,5 +41,3 @@ void dfs(int u,int p)
 		vu[p]|=2; //marquer u comme noeud d'articulation
 	}
 }
-
-
