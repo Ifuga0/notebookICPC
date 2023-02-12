@@ -1,8 +1,6 @@
-
+// Find pattern t in s
 /// Preprocessing
-
 int prefix[MMAX];
-
 int i=1, j=0;
 prefix[0]=0;
 while(t[i]!='\0') {
@@ -13,10 +11,8 @@ while(t[i]!='\0') {
 	else
 		prefix[i++]=0;
 }
-
 /// Parsing
-
-j=0;
+j=i=0;
 vector<int> ind;
 while(i<n) {
 	if(s[i]==t[j]) {
